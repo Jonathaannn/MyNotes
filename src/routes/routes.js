@@ -4,8 +4,9 @@ const controller = require("../controller/postController")
 
 routes.get('/', controller.start)
 routes.get('/mynotes', controller.mynotes)
-routes.post('/mynotes/criar', controller.create)
-routes.get('/mynotes/busca/:texto', controller.read)
-routes.delete('/mynotes/excluir/:id', controller.delete)
-routes.put('/mynotes/editar/:id', controller.update)
+routes.post('/mynotes/criar', controller.createPost)
+routes.get('/mynotes/buscar/:texto', controller.readPost)
+routes.put('/mynotes/editar/:id', controller.updatePost)
+routes.delete('/mynotes/excluir/:id', controller.deletePost)
+
 module.exports = routes
