@@ -1,0 +1,22 @@
+<nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid">
+      <h2 class="fw-normal">MyNotes</h2>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-3 me-auto mb-2 mb-lg-0">
+          <li class="nav-item ms-3">
+            <%- include('./newNote.ejs') %> 
+          </li>
+          <li class="nav-item">
+            <a href="/mynotes" class="ms-2 nav-link">Home</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 bg-body-tertiary" id="texto" type="text" placeholder="Procurar Note" aria-label="Search">
+          <button class="btn btn-outline-warning" type="button" onclick="busca()">Buscar</button>
+        </form>
+      </div>
+    </div>
+  </nav>

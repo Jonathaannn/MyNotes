@@ -1,0 +1,16 @@
+<% for (post of post) {%>
+    <div class="col-4">
+    <div class="card bg-dark text-light mt-5 ms-auto me-auto" style="width: 19rem;">
+        <div class="card-body">
+            <h5 class="card-title "><%= post.titulo %></h5><hr>
+            <p class="card-text"><%= post.conteudo %> </p>
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+            <%- include('./edit.ejs'), post._id %> 
+            <form action="/mynotes/excluir/<%= post._id %>?_method=DELETE" method="post">
+                 <button class="btn btn-danger" type="submit">Excluir</button>
+            </form>
+        </div>
+    </div>
+    </div>
+<% } %> 

@@ -1,0 +1,31 @@
+<button type="button" class="btn btn-warning me-3" data-bs-toggle="modal" data-bs-target="#<%= post._id %>">
+    Editar
+</button>
+
+  <div class="modal fade" id="<%= post._id %>" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark" data-bs-theme="dark">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Editar Note</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/mynotes/editar/<%= post._id %>?_method=PUT" method="post" class="">
+            <div class="mb-3">
+                <label for="titulo" class="col-form-label text-light">Título:</label>
+                <input id="titulo" class="form-control text-dark" type="text" name="titulo" value="<%= post.titulo %> ">
+            </div>
+            <div class="mb-3">
+                <label for="conteudo" class="col-form-label text-light">Escreva o que pensa:</label>
+                <textarea id="conteudo" name="conteudo" class="form-control text-dark"><%= post.conteudo %> </textarea>
+            </div><hr>
+            <button type="submit" class="btn btn-warning me-3">Salvar</button>
+            <button type="reset" class="btn btn-danger">Apagar</button>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+</div>

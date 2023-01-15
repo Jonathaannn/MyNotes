@@ -32,7 +32,7 @@ const createPost = async (req, res) =>{
 
 const readPost = async (req, res) =>{
     try {
-        const texto = req.params.texto
+        const texto = req.params.text
         const post = await Post.find({$text:{$search: texto}},{score:{$meta:"textScore"}})
         if (post==false) {
             res.status(404).json({msg:"Post não encontrado!"})
