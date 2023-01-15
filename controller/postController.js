@@ -1,4 +1,4 @@
-const Post = require("../model/post")
+const Post = require("../model/Note")
 
 const start = async (req, res) =>{
     try {
@@ -38,7 +38,7 @@ const readPost = async (req, res) =>{
             res.status(404).json({msg:"Post não encontrado!"})
             return
         }
-        res.render("../page/index.ejs", {post: post})
+        res.render("../page/index", {post: post})
     } catch (error) {
         console.log(`Erro: ${error}`)
     }
