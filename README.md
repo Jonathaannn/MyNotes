@@ -27,6 +27,9 @@ Após o clone do repositório, digitar no terminal ```npm run  start```. A inter
 ## Imagens
 
 ![](imgs/mynotes1.png)
+
 ![](imgs/mynotes2.png)
+
 ![](imgs/mynotes3.png)
+
 ![](imgs/mynotes4.png)
