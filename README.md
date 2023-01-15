@@ -23,3 +23,10 @@ Você pode alerar os dados da conexão do banco e da porta da API no arquivo .en
 
 ## Uso
 Após o clone do repositório, digitar no terminal ```npm run  start```. A interface do sistema é básica e sugestiva, crie suas notas, pesquise notas específicas, atualize notas e exclua notas.
+
+## Imagens
+
+![](imgs/mynotes1.png)
+![](imgs/mynotes2.png)
+![](imgs/mynotes3.png)
+![](imgs/mynotes4.png)
