@@ -1,12 +1,14 @@
 const { Router } = require("express")
 const routes = Router()
-const controller = require("../controller/postController")
+const postController = require("../controller/postController")
+const userController = require("../controller/userController")
 
-routes.get('/', controller.start)
-routes.get('/mynotes', controller.mynotes)
-routes.post('/mynotes/criar', controller.createPost)
-routes.get('/mynotes/buscar/:text', controller.readPost)
-routes.put('/mynotes/editar/:id', controller.updatePost)
-routes.delete('/mynotes/excluir/:id', controller.deletePost)
+routes.get('/', postController.mynotes)
+routes.post('/criar', postController.createPost)
+routes.get('/buscar/:text', postController.readPost)
+routes.put('/editar/:id', postController.updatePost)
+routes.delete('/excluir/:id', postController.deletePost)
+
+routes.get('/login', userController.login)
 
 module.exports = routes

@@ -1,17 +1,9 @@
 const Post = require("../model/Note")
 
-const start = async (req, res) =>{
-    try {
-        res.redirect("/mynotes")
-    } catch (error) {
-        console.log(`Erro: ${error}`)
-    }
-}
-
 const mynotes = async (req, res) =>{
     try {
         const post = await Post.find()
-        res.render("../page/index", {post: post})
+        res.render("../page/index.ejs", {post: post})
     } catch (error) {
         console.log(`Erro: ${error}`)
     }
@@ -72,4 +64,4 @@ const deletePost = async (req, res) =>{
     }
 }
 
-module.exports = {start, mynotes, createPost, readPost, updatePost, deletePost}
+module.exports = { mynotes, createPost, readPost, updatePost, deletePost}
