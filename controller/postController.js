@@ -55,11 +55,7 @@ const readPost = async (req, res) =>{
     try {
         const texto = req.params.text
         const post = await Post.find({$text:{$search: texto}},{score:{$meta:"textScore"}})
-        if (post==false) {
-            res.status(404).json({msg:"Post não encontrado!"})
-            return
-        }
-        res.render("../page/index", {post: post})
+        res.render("../page/index", {post})
     } catch (error) {
         console.log(`Erro: ${error}`)
     }
