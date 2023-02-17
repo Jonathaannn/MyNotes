@@ -36,4 +36,14 @@ const signup = async (req, res) => {
     }
 }
 
-module.exports = { login, signup }
+const signout = async (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+          console.log(err)
+        } else {
+          res.redirect('/mynotes/login')
+        }
+    })
+}
+
+module.exports = { login, signup, signout }

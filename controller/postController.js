@@ -1,5 +1,5 @@
 const Post = require("../model/Note")
-const User = require("../model/User")
+const mongoonse = require("mongoose")
 const { driver } = require("../database/db")
 
 const UserPost = async (post, user) => {
