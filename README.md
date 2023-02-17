@@ -11,7 +11,10 @@ Exemplo do arquivo .env (trocar os valores das chaves pelos dados do seu banco):
 ```
 MDB_HOST = O host do seu cluster
 MDB_USER = Seu usuário no Atlas
-MDB_PASS = Sua senha
+MDB_PASS = Sua senha Atlas
+NEO_USER = Seu usuário no Neo4j
+NEO_PASS = Sua senha Neo4j
+SECRET = Segredo do cookie-session, pode colocar qualquer coisa aqui
 S_PORT = 3000
 ```
 
@@ -22,9 +25,11 @@ S_PORT = 3000
 Você pode alerar os dados da conexão do banco e da porta da API no arquivo .env
 
 ## Uso
-Após o clone do repositório, digitar no terminal ```npm run  start```. A interface do sistema é básica e sugestiva, crie suas notas, pesquise notas específicas, atualize notas e exclua notas.
+Após o clone do repositório, digitar no terminal ```npm run start```. A interface do sistema é básica e sugestiva, crie suas notas, pesquise notas específicas, atualize notas e exclua notas.
 
 ## Imagens
+
+![](public/imgs/mynotes5.png)
 
 ![](public/imgs/mynotes1.png)
 
