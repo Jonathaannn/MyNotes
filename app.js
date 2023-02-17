@@ -14,7 +14,10 @@ app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false, maxAge: 1200000 }
+    cookie: {
+        secure: false,
+        maxAge: 1200000
+    }
 }))
 
 // Diretório static public

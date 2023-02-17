@@ -1,4 +1,26 @@
 const Post = require("../model/Note")
+const User = require("../model/User")
+const { driver } = require("../database/db")
+
+const UserPost = async (post, user) => {
+    const session = driver.session()
+    try {
+        await session.run(
+            'create (p:Post{id: $id}) return p, id(p)',
+            {id: post}
+        )
+        await session.run(
+            `match (p:Post{id: $postId})
+            match (u:User{id: $userId})
+            create (u)-[pt:postou]->(p)`,
+            {postId: post, userId: user}
+        )
+    } catch (error) {
+        console.log(`Erro: ${error}`)
+    } finally {
+        await session.close()
+    }
+}
 
 const mynotes = async (req, res) =>{
     try {
@@ -10,12 +32,19 @@ const mynotes = async (req, res) =>{
 }
 
 const createPost = async (req, res) =>{
+    const dados = {
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo,
+    }
+    if(!dados.titulo || !dados.conteudo){
+        return res.redirect('/mynotes')
+    }
     try {
-        const post = {
-            titulo: req.body.titulo,
-            conteudo: req.body.conteudo,
-        }
-        await Post.create(post)
+        const post = await Post.create(dados)
+
+        const userId = req.session.user
+        UserPost(post._id.toString(), userId.id.toString())
+        
         res.redirect('/mynotes')
     } catch (error) {
         console.log(`Erro: ${error}`)
@@ -54,10 +83,27 @@ const updatePost = async (req, res) =>{
     }
 }
 
-const deletePost = async (req, res) =>{
+const UserPostDelete = async (user, post) => {
+    const session = driver.session()
     try {
-        const id = req.params.id
+        await session.run(
+            `match(p:Post{id: $postId}) detach delete p`,
+            {postId: post}
+        )
+    } catch (error) {
+        console.log(`Erro: ${error}`)
+    } finally {
+        await session.close()
+    }
+}
+
+const deletePost = async (req, res) =>{
+    const userId = req.session.user
+    const id = req.params.id
+    try {
+        UserPostDelete(userId.id.toString(), id.toString())
         await Post.findByIdAndDelete(id)
+
         res.redirect('/mynotes')
     } catch (error) {
         console.log(`Erro: ${error}`)
